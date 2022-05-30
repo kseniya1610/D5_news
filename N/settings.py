@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'appointments.apps.AppointmentsConfig',
+    'django_apscheduler',
 ]
 
 SITE_ID = 1
@@ -61,6 +63,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'N.urls'
@@ -150,7 +155,7 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'sign/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/news/'
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
@@ -168,3 +173,7 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = 'slonchak.kseniya93@yandex.ru'
 
 MANAGERS = [('slonchak.ksenya@mail.ru')]
+
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+
+APSCHEDULER_RUN_NOW_TIMEOUT = 25
